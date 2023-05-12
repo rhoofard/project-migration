@@ -3,13 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       first_name:
-        type: environment
+        type: string
         description: 'Your first name'
       last_name:
-        type: environment
+        type: string
         description: 'Your last name'
       gh_username:
-        type: environment
+        type: string
         description: 'GitHub username for Liatrio'
 
 jobs:
