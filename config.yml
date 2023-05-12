@@ -1,6 +1,6 @@
-source_organization:
-source_repo:
-source_project_number:
-dest_organization: 
-dest_project_name: 
-dest_repo: 
+source_organization: liatrio
+source_repo: new-hire-launchpad
+source_project_number: 35
+dest_organization: liatrio
+dest_project_name: $FIRST_NAME-$LAST_NAME-onboarding
+dest_repo: $FIRST_NAME-$LAST_NAME-onboarding

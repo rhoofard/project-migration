@@ -1,0 +1,29 @@
+name: Create Onboarding Items for New Hire
+on:
+  workflow_dispatch:
+    inputs:
+      first_name:
+        type: environment
+        description: 'Your first name'
+      last_name:
+        type: environment
+        description: 'Your last name'
+      gh_username:
+        type: environment
+        description: 'GitHub username for Liatrio'
+
+jobs:
+    create-cards:
+      runs-on: ubuntu-latest
+      env: 
+        FIRST_NAME: ${{inputs.first_name}}
+        LAST_NAME: ${{inputs.last_name}}
+        USERNAME: ${{inputs.gh_username}}
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 18
+        
+        - run: node index.js migrate --token-env --create-repo
+      
