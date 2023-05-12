@@ -25,5 +25,5 @@ jobs:
           with:
             node-version: 18
         
-        - run: node index.js --token-env --create-repo
+        - run: node index.js migrate --token-env --create-repo
       
