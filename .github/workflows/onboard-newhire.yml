@@ -4,26 +4,33 @@ on:
     inputs:
       first_name:
         type: string
-        description: 'Your first name'
+        description: New hire first name
       last_name:
         type: string
-        description: 'Your last name'
-      gh_username:
-        type: string
-        description: 'GitHub username for Liatrio'
+        description: New hire last name
+
+
 
 jobs:
     create-cards:
       runs-on: ubuntu-latest
-      env: 
+
+      permissions:
+        issues: write
+        repository-projects: write
+
+      env:
         FIRST_NAME: ${{inputs.first_name}}
         LAST_NAME: ${{inputs.last_name}}
-        USERNAME: ${{inputs.gh_username}}
+        gh_username: ${{github.actor}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       steps:
         - uses: actions/checkout@v3
         - uses: actions/setup-node@v3
           with:
             node-version: 20
+            
         - run: npm ci
-        - run: node index.js migrate config.yml --create-repo --token-env
+        - run: node index.js migrate config.yml --token-env
       
