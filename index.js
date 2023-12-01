@@ -62,8 +62,6 @@ const migrate = program
 program.parse(process.argv);
 
 
-
-
 async function getIssues(owner, repo, token){
     const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
         owner: owner,
